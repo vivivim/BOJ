@@ -1,23 +1,25 @@
 #include <iostream>
 #include <queue>
-using  namespace std;
+using namespace std;
 
 int	main(void)
 {
-	int	n, tmp;
-	cin >> n;
+	cin.sync_with_stdio(0);
+	cin.tie(0);
 
-	priority_queue<int> pq;
+	int	n, tmp;
+	priority_queue< int, vector<int>, greater<int> >	pq;
+	cin >> n;
 	for (int i = 0; i < n; i++)
 	{
 		cin >> tmp;
 		if (!tmp)
 		{
 			if (pq.empty())
-				cout << 0;
+				cout << 0 << '\n';
 			else
 			{
-				cout << pq.top();
+				cout << pq.top() << '\n';
 				pq.pop();
 			}
 		}
