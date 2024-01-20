@@ -1,5 +1,6 @@
 #include <iostream>
 #include <stack>
+#include <queue>
 using namespace std;
 
 int	main(void)
@@ -13,20 +14,31 @@ int	main(void)
 
 	int	i = 0, j = 1;
 	stack<int>	s;
+	queue<char>	q;
 	while (i < n)
 	{
 		if (s.empty() || seq[i] > s.top())
 		{
 			s.push(j);
-			cout << "+\n";
+			q.push('+');
 			j++;
 		}
-		else if (seq[i] <= s.top())
+		else if (seq[i] == s.top())
 		{
 			s.pop();
-			cout << "-\n";
+			q.push('-');
 			i++;
-		}//뽑은 숫자 기억하고 그것만 건너뛰어야 함  무조건 쁠쁠 x
+		}
+		else if (seq[i] < s.top())
+		{
+			cout << "NO\n";
+			return (0);
+		}
+	}
+	while (!q.empty())
+	{
+		cout << q.front() << '\n';
+		q.pop();
 	}
 	return (0);
 }
