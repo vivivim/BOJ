@@ -1,12 +1,10 @@
 #include <iostream>
-#include <algorithm>
-#include <cstring>
 
 int	arr[1000001];
 
 int	union_find(int n)
 {
-	if (arr[n] == -1)
+	if (arr[n] == 0)
 		return n;
 	else
 		return arr[n] = union_find(arr[n]);
@@ -19,7 +17,7 @@ void	combine(int a, int b)
 	
 	if (a == b)
 		return ;
-	else if (a < b)
+	else if (a > b)
 		arr[b] = a;
 	else
 		arr[a] = b;
@@ -34,11 +32,10 @@ int	main(void)
 	std::cin >> n >> m;
 
 	int	z, a, b;
-	std::memset(arr, -1, sizeof(arr));
-	for (int i = 0; i < m; ++i)
+	while (m--)
 	{
 		std::cin >> z >> a >> b;
-		if (z == 0)
+		if (z == 0 && a != b)
 			combine(a, b);
 		if (z == 1)
 		{
