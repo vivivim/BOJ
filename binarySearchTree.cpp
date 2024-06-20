@@ -3,50 +3,27 @@
 #include <algorithm>
 #include <cmath>
 
+int	arr[10001];
+
+void	letsGoTree(int start, int end)
+{
+	if (start >= end)
+		return ;
+	int	i;
+	for (i = start+1; i < end; ++i)
+	{
+		if (arr[start] < arr[i])
+			break ;
+	}
+	letsGoTree(start+1, i);
+	letsGoTree(i, end);
+	std::cout << arr[start] << '\n';
+}
+
 int	main(void)
 {
-	int	tmp;
-	std::vector<int>	num;
-	std::vector<int>	dst;
-	while (std::cin >> tmp)
-	{
-		num.push_back(tmp);
-	}
-	if (num.size() == 1)
-	{
-		std::cout << num[0] << std::endl;
-		return 0;
-	}
-	
-	std::vector<int>::iterator	minIt = min_element(num.begin(), num.end());
-	std::vector<int>::iterator	idx = minIt;
-	std::vector<int>::iterator	usedMax = num.begin();
-	for (int i = 1; ;++i)
-	{
-		dst.push_back(*idx);
-		if (idx == num.begin() + 1)
-			break ;
-		if (usedMax < idx)
-			usedMax = idx;
-		if (minIt == num.end() - 1)
-			--idx;
-		else
-			idx += i * pow(-1, i-1);
-	}
-	std::vector<int>::iterator	last = num.end() - 1;
-	if (usedMax == num.begin())
-		dst.push_back(*usedMax);
-	else if (usedMax == num.begin() + 1 || usedMax == num.end() - 1)
-		dst.push_back(num[0]);
-	else if (usedMax != num.begin())
-	{
-		for (; last > usedMax; --last)
-			dst.push_back(*last);
-		dst.push_back(num[0]);
-	}
-
-	std::vector<int>::iterator	it = dst.begin();
-	for (; it != dst.end(); ++it)
-		std::cout << *it << '\n';
+	int	i;
+	for (i = 0; std::cin >> arr[i]; ++i)	;
+	letsGoTree(0, i);
 	return 0;
 }
