@@ -1,3 +1,7 @@
 a.out
 a.out.dSYM/
 *.swp
+out/
+.idea/
+*.iml
+.DS_Store
