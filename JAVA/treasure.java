@@ -7,17 +7,21 @@ public class treasure {
         Scanner sc = new Scanner(System.in);
         n = sc.nextInt();
 
-        Integer[] r = new Integer[n];
+        int[] a = new int[n];
+        int[] b = new int[n];
+
         for (int i = 0; i < n; ++i)
-            r[i] = sc.nextInt();
+            a[i] = sc.nextInt();
+        for (int i = 0; i < n; ++i)
+            b[i] = sc.nextInt();
 
         int answer = 0;
 
-        Arrays.sort(r, Collections.reverseOrder());
+        Arrays.sort(a);
+        Arrays.sort(b);
 
-        for (int i = 0; i < n; ++i) {
-            answer = Math.max(answer, r[i] * (i+1));
-        }
+        for (int i = 0; i < n; ++i)
+            answer += a[i] * b[n-i-1];
 
         System.out.println(answer);
         sc.close();
