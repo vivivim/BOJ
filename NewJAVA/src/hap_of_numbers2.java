@@ -1,5 +1,3 @@
-package JAVA;
-
 import java.util.Scanner;
 
 public class hap_of_numbers2 {
