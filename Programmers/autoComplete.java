@@ -36,13 +36,12 @@ class Solution {
             
             for (int i = 0; i < n; ++i) {
                 char c = word.charAt(i);
-                cur = cur.child[c - 'a'];
                 
-                if (cur.preCt == 1) {
-                    ++ct;
+                cur = cur.child[c - 'a'];
+                ++ct;
+                
+                if (cur.preCt == 1)
                     break ;
-                } else
-                    ++ct;
             }
             
             answer += ct;
