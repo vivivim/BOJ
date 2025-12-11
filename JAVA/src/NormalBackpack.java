@@ -15,8 +15,6 @@ public class NormalBackpack {
 
         for (int i = 0; i < n; ++i) {
             for (int j = k - info[i][0]; j >= 0; --j) {
-                if (j != 0 && dp[j] == 0) continue;
-
                 int weight = info[i][0] + j;
 
                 dp[weight] = Math.max(dp[weight], dp[j] + info[i][1]);
