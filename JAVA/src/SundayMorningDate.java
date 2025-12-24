@@ -52,8 +52,9 @@ public class SundayMorningDate {
         while (!pq.isEmpty()) {
             Node cur = pq.poll();
 
-            if (cur.t > dist[cur.y][cur.x][0] || cur.st > dist[cur.y][cur.x][1]) continue;
             if (cur.y == fy && cur.x == fx) break;
+            if (cur.t > dist[cur.y][cur.x][0]) continue;
+            if (cur.t == dist[cur.y][cur.x][0] && cur.st > dist[cur.y][cur.x][1]) continue;
 
             for (int i = 0; i < 4; ++i) {
                 int ny = cur.y + dy[i];
