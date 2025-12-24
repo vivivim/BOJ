@@ -47,9 +47,6 @@ public class UnidentifiedDestination {
             int[][] dist = new int[n+1][2];
             for (int i = 0; i <= n; ++i)
                 Arrays.fill(dist[i], Integer.MAX_VALUE);
-            dist[s][0] = 0;
-            dist[s][1] = 0;
-            int min = Integer.MAX_VALUE;
 
             while (!pq.isEmpty()) {
                 Node cur = pq.poll();
