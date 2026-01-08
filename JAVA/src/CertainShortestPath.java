@@ -4,9 +4,9 @@ import java.util.*;
 public class CertainShortestPath {
     static class Node implements Comparable<Node> {
         int loc, o1, o2;
-        long cost;
+        int cost;
 
-        Node(int loc, long cost, int o1, int o2) {
+        Node(int loc, int cost, int o1, int o2) {
             this.loc = loc;
             this.cost = cost;
             this.o1 = o1;
@@ -56,7 +56,7 @@ public class CertainShortestPath {
             if (cur.cost > dist[cur.loc][cur.o1][cur.o2]) continue;
 
             for (Node nd : graph.get(cur.loc)) {
-                long newCost = cur.cost + nd.cost;
+                int newCost = cur.cost + nd.cost;
                 int co1 = nd.loc == o1 ? 1 : cur.o1;
                 int co2 = nd.loc == o2 ? 1 : cur.o2;
 
